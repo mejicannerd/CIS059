@@ -25,6 +25,7 @@ public class Menu {
         printCommand('c', "[C]reates a big cat");
         printCommand('l', "[L]ists all big cats");
         printCommand('d', "[D]eletes a big cat");
+        printCommand('f', "[F]inds a cat"); // New find command
         printCommand('q', "[Q]uits");
 
         printLine();
@@ -65,6 +66,9 @@ public class Menu {
             case 'd':
                 executeDelete(catList);
                 break;
+            case 'f':
+                executeFind(catList); // New find functionality
+                break;
             case 'q':
                 executeQuit();
                 break;
@@ -74,6 +78,26 @@ public class Menu {
         }
 
         return success;
+    }
+
+    // New method to find a cat
+    public void executeFind(LinkedList<Panthera> catList) {
+        System.out.println();
+        System.out.print("Enter a name or part of a name to find cats: ");
+        String query = input.nextLine().toLowerCase();
+        System.out.println();
+
+        boolean found = false;
+        for (Panthera cat : catList) {
+            if (cat.getName().toLowerCase().contains(query)) {
+                System.out.println("Found: " + cat);
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No cats found matching '" + query + "'");
+        }
     }
 
     // delete a big cat based on name
