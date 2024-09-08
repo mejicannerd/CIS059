@@ -144,8 +144,10 @@ public class Menu {
         Panthera result;
         if (catType == 1) {
             result = new Tiger(name);
-        } else {
+        } else if (catType == 2) {
             result = new Lion(name);
+        } else {
+            result = new Jaguar(name);
         }
         return result;
     }
@@ -165,14 +167,14 @@ public class Menu {
             }
         }
 
-        System.out.print("Enter the type of big cat (1 for Tiger, 2 for Lion): ");
+        System.out.print("Enter the type of big cat (1 for Tiger, 2 for Lion, 3 for Jaguar): ");
         int catType = input.nextInt();
         input.nextLine(); // Consume newline
         System.out.println();
 
         // Validate input
-        if (catType != 1 && catType != 2) {
-            System.out.println("Invalid choice. Please enter 1 for Tiger or 2 for Lion.");
+        if (catType < 1 || catType > 3) {
+            System.out.println("Invalid choice. Please enter 1 for Tiger, 2 for Lion, or 3 for Jaguar.");
             return;
         }
 
