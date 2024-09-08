@@ -140,8 +140,13 @@ public class Menu {
         System.out.println();
     }
 
-    public Panthera getNewCat(String name) {
-        Panthera result = new Tiger(name); // Placeholder for simplification, handle more types as needed
+    public Panthera getNewCat(String name, int catType) {
+        Panthera result;
+        if (catType == 1) {
+            result = new Tiger(name);
+        } else {
+            result = new Lion(name);
+        }
         return result;
     }
 
@@ -160,7 +165,18 @@ public class Menu {
             }
         }
 
-        Panthera cat = getNewCat(name);
+        System.out.print("Enter the type of big cat (1 for Tiger, 2 for Lion): ");
+        int catType = input.nextInt();
+        input.nextLine(); // Consume newline
+        System.out.println();
+
+        // Validate input
+        if (catType != 1 && catType != 2) {
+            System.out.println("Invalid choice. Please enter 1 for Tiger or 2 for Lion.");
+            return;
+        }
+
+        Panthera cat = getNewCat(name, catType);
         catList.add(cat);
         System.out.println(name + " has been added.");
     }

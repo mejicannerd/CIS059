@@ -78,7 +78,7 @@ public class PantheraGPS {
     private Integer seed(String s) {
         Integer seed = 0;
 
-        for (Integer i = 0; i < s.length() ; i++) {
+        for (Integer i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
             seed += (int) ch;
         }
@@ -100,6 +100,5 @@ public class PantheraGPS {
     public Float latitude() {
         return latitude;
     }
-
 
 }
