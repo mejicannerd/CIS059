@@ -6,30 +6,34 @@ package com.africanbigcats;
 public class Panthera extends PantheraGPS {
 
     /*
-        TIP:
-        Students will need to add additional attributes and methods to complete this classes
-        implementation.
+     * TIP:
+     * Students will need to add additional attributes and methods to complete this
+     * classes
+     * implementation.
      */
 
     // constructor
     public Panthera(String name) {
-
-        // call the super-class (parent) to instatiate it
+        // call the super-class (parent) to instantiate it
         super(name);
 
         // initialize attributes
         this.setSpecies("panthera");
-
     }
 
-    // serializes attributes into a string
+    // Getter for name
+    public String getName() {
+        return this.name();
+    }
+
+    // Serializes attributes into a string
     @Override // override superclass method
     public String toString() {
         String s;
 
         // since the object is complex, we return a JSON formatted string
         s = "{ ";
-        s += "name: " + this.name();
+        s += "name: " + this.getName(); // using getName() method
         s += ", ";
         s += "species: " + this.species();
         s += ", ";
@@ -39,8 +43,5 @@ public class Panthera extends PantheraGPS {
         s += " }";
 
         return s;
-
     }
-
-
 }
