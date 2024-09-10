@@ -33,6 +33,8 @@ public class Jaguar extends Panthera {
         s += ", ";
         s += "latitude: " + latitude();
         s += ", ";
+        s += "weight: " + this.getWeight(); // Display the weight
+        s += ", ";
         s += "fur: " + fur(); // This will call the overridden fur method specific to Jaguar
         s += ", ";
         s += "sleepsInTrees: " + sleepsInTrees; // Include the sleepsInTrees attribute

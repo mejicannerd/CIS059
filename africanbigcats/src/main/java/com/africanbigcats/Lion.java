@@ -29,6 +29,8 @@ public class Lion extends Panthera {
         s += ", ";
         s += "latitude: " + latitude();
         s += ", ";
+        s += "weight: " + this.getWeight(); // Display the weight
+        s += ", ";
         s += "fur: " + fur(); // This will call the overridden fur method specific to Lion
         s += " }";
 
@@ -39,4 +41,5 @@ public class Lion extends Panthera {
     public String fur() {
         return "mane";
     }
+
 }
