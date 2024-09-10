@@ -1,29 +1,27 @@
 package com.africanbigcats;
 
 /*
- * Panthera base class that simulates GPS information
+ * Tiger class that extends Panthera to model specific characteristics of tigers
  */
 public class Tiger extends Panthera {
 
-    // constructor
+    // Constructor
     public Tiger(String name) {
-
-        // call the super-class (parent) to instatiate it
+        // Call the super-class (parent) to instantiate it
         super(name);
 
-        // initialize attributes
+        // Initialize attributes specific to the Tiger
         this.setSpecies("tiger");
-
     }
 
-    // serializes attributes into a string
-    @Override // override superclass method
+    // Overrides the toString method to include specific attributes for Tiger
+    @Override
     public String toString() {
         String s;
 
-        // since the object is complex, we return a JSON formatted string
+        // Since the object representation is complex, we return a JSON formatted string
         s = "{ ";
-        s += "name: " + name();
+        s += "name: " + getName(); // Use the getter method from Panthera
         s += ", ";
         s += "species: " + species();
         s += ", ";
@@ -31,17 +29,18 @@ public class Tiger extends Panthera {
         s += ", ";
         s += "latitude: " + latitude();
         s += ", ";
-        s += "weight: " + this.getWeight(); // Display the weight
+        s += "weight: " + getWeight(); // Display the weight using getter method from Panthera
         s += ", ";
-        s += "fur: " + fur();
+        s += "speed: " + speed(); // Display the current speed using the speed() method from Panthera
+        s += ", ";
+        s += "fur: " + fur(); // This will call the fur method specific to Tiger
         s += " }";
 
         return s;
-
     }
 
+    // Method to return the characteristic fur description of Tigers
     public String fur() {
         return "stripes";
     }
-
 }

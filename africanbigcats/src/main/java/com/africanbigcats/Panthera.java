@@ -42,6 +42,11 @@ public class Panthera extends PantheraGPS {
         return this.speedRandom.nextFloat() * maxSpeed;
     }
 
+    // Method to simulate a roar
+    public void roar() {
+        System.out.println("Rrrrrrrrroooooooaaaaarrrrr!");
+    }
+
     // Serializes attributes into a string
     @Override
     public String toString() {

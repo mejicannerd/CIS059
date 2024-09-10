@@ -21,7 +21,7 @@ public class Lion extends Panthera {
 
         // Since the object representation is complex, we return a JSON formatted string
         s = "{ ";
-        s += "name: " + name();
+        s += "name: " + getName(); // Use the getter method from Panthera
         s += ", ";
         s += "species: " + species();
         s += ", ";
@@ -29,9 +29,11 @@ public class Lion extends Panthera {
         s += ", ";
         s += "latitude: " + latitude();
         s += ", ";
-        s += "weight: " + this.getWeight(); // Display the weight
+        s += "weight: " + getWeight(); // Display the weight using getter method from Panthera
         s += ", ";
-        s += "fur: " + fur(); // This will call the overridden fur method specific to Lion
+        s += "speed: " + speed(); // Display the current speed using the speed() method from Panthera
+        s += ", ";
+        s += "fur: " + fur(); // This will call the fur method specific to Lion
         s += " }";
 
         return s;
@@ -41,5 +43,4 @@ public class Lion extends Panthera {
     public String fur() {
         return "mane";
     }
-
 }
