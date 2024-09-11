@@ -27,6 +27,7 @@ public class Menu {
         printCommand('d', "[D]eletes a big cat");
         printCommand('f', "[F]inds a cat");
         printCommand('r', "[R]isk report"); // New risk report command
+        printCommand('w', "[W]arning report"); // New warning report command
         printCommand('q', "[Q]uits");
 
         printLine();
@@ -72,6 +73,9 @@ public class Menu {
                 break;
             case 'r':
                 executeRiskReport(catList); // New risk report functionality
+                break;
+            case 'w':
+                executeWarningReport(catList); // New warning report functionality
                 break;
             case 'q':
                 executeQuit();
@@ -119,6 +123,47 @@ public class Menu {
 
         System.out.println("Risk Report:");
         System.out.printf("Distance between %s and %s: %.2f units\n", cat1.getName(), cat2.getName(), distance);
+    }
+
+    // Method to calculate and print the warning report
+    public void executeWarningReport(LinkedList<Panthera> catList) {
+        System.out.println();
+        System.out.print("Enter your current longitude: ");
+        double userLongitude = input.nextDouble();
+        System.out.print("Enter your current latitude: ");
+        double userLatitude = input.nextDouble();
+        input.nextLine(); // Consume newline
+        System.out.println();
+
+        if (catList.isEmpty()) {
+            System.out.println("There are no African big cats in the list.");
+            return;
+        }
+
+        Panthera closestCat = null;
+        double minDistance = Double.MAX_VALUE;
+
+        // Find the closest cat
+        for (Panthera cat : catList) {
+            double distance = calculateDistance(userLatitude, userLongitude, cat.latitude(), cat.longitude());
+            if (distance < minDistance) {
+                minDistance = distance;
+                closestCat = cat;
+            }
+        }
+
+        System.out.println("Warning Report:");
+        if (closestCat != null) {
+            System.out.printf(
+                    "The closest African Big Cat is %s located at latitude %.2f and longitude %.2f. Distance: %.2f units.\n",
+                    closestCat.getName(), closestCat.latitude(), closestCat.longitude(), minDistance);
+        }
+    }
+
+    // Helper method to calculate the distance between two points using the distance
+    // formula
+    public double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
+        return Math.sqrt(Math.pow(lon2 - lon1, 2) + Math.pow(lat2 - lat1, 2));
     }
 
     // New method to find a cat
