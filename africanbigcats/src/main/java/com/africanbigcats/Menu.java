@@ -25,7 +25,8 @@ public class Menu {
         printCommand('c', "[C]reates a big cat");
         printCommand('l', "[L]ists all big cats");
         printCommand('d', "[D]eletes a big cat");
-        printCommand('f', "[F]inds a cat"); // New find command
+        printCommand('f', "[F]inds a cat");
+        printCommand('r', "[R]isk report"); // New risk report command
         printCommand('q', "[Q]uits");
 
         printLine();
@@ -67,7 +68,10 @@ public class Menu {
                 executeDelete(catList);
                 break;
             case 'f':
-                executeFind(catList); // New find functionality
+                executeFind(catList);
+                break;
+            case 'r':
+                executeRiskReport(catList); // New risk report functionality
                 break;
             case 'q':
                 executeQuit();
@@ -78,6 +82,43 @@ public class Menu {
         }
 
         return success;
+    }
+
+    // Method to calculate and print the risk report
+    public void executeRiskReport(LinkedList<Panthera> catList) {
+        System.out.println();
+        System.out.print("Enter the name of the first big cat: ");
+        String name1 = input.nextLine();
+        System.out.print("Enter the name of the second big cat: ");
+        String name2 = input.nextLine();
+        System.out.println();
+
+        Panthera cat1 = null;
+        Panthera cat2 = null;
+
+        // Find the cats by name
+        for (Panthera cat : catList) {
+            if (cat.getName().equalsIgnoreCase(name1)) {
+                cat1 = cat;
+            } else if (cat.getName().equalsIgnoreCase(name2)) {
+                cat2 = cat;
+            }
+        }
+
+        if (cat1 == null || cat2 == null) {
+            System.out.println("One or both of the specified cats could not be found.");
+            return;
+        }
+
+        // Calculate the distance using the distance formula
+        double longitude1 = cat1.longitude();
+        double latitude1 = cat1.latitude();
+        double longitude2 = cat2.longitude();
+        double latitude2 = cat2.latitude();
+        double distance = Math.sqrt(Math.pow(longitude2 - longitude1, 2) + Math.pow(latitude2 - latitude1, 2));
+
+        System.out.println("Risk Report:");
+        System.out.printf("Distance between %s and %s: %.2f units\n", cat1.getName(), cat2.getName(), distance);
     }
 
     // New method to find a cat
